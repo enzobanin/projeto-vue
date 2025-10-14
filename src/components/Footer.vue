@@ -1,6 +1,6 @@
 <template>
   <footer class="rodape">
-    <h1>Mini-curso de Vue Js. Desenvolvido por Enzo</h1>
+    <h1>Mini-curso de Vue.Js IFSP - 2025</h1>
   </footer>
 </template>
 
@@ -9,7 +9,8 @@
   background: linear-gradient(135deg, #264653, #2a9d8f);
   color: #fff;
   text-align: center;
-  padding: 1rem;
+  padding: 15px;
+  margin-top: 50px;
   border-radius: 16px 16px 0 0;
   font-family: sans-serif;
   margin-top: 2rem;
