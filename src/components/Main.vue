@@ -1,7 +1,5 @@
 <template>
   <div class="app">
-    <h1>Lista de Tarefas📅</h1>
-
     <label for="escolhaData">Escolha o dia: </label>
     <input type="date" :min=hoje id="escolhaData" v-model="dataSelecionada" class="data">
 
