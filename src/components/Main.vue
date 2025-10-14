@@ -16,7 +16,7 @@
       </li>
     </ul>
 
-    <p v-if="todasTarefas.length === 0">Nenhuma tarefa para este dia.</p>
+    <p v-if="tarefasDatas.length === 0">Nenhuma tarefa para este dia.</p>
 
   </div>
 </template>
@@ -86,8 +86,11 @@ function salvarTarefas(){
 <style scoped>
 
 .app {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
   max-width: 600px;
-  margin: 3rem auto;
+  margin: 3rem auto 6rem auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fefefe;
   border-radius: 10px;
