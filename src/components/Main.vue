@@ -5,13 +5,27 @@
 
     <form @submit.prevent="adicionarTarefa()" class="formulario">
       <input v-model="novaTarefa" type="text" placeholder="Adicione a tarefa" required/>
+      
+      <!-- parte de prioridades dividido em alta, media e baixa -->
+      <select v-model="novaPrioridade" class="prioridade-select">
+        <option disabled value="">Selecione a prioridade</option>
+        <option value="alta">🔴 Alta</option>
+        <option value="media">🟠 Média</option>
+        <option value="baixa">🟢 Baixa</option>
+      </select>
       <button type="submit">Adicionar Tarefa</button>
     </form>
 
     <h2>Tarefas para <span class="dataDestacada">{{ dataFormatada }}</span></h2>
     <ul class="listaTarefas">
-      <li v-for="(tarefa, index) in tarefasDatas" :key="index">
-        {{ tarefa}}
+      <!--add :class="tarefa.prioridade" no final da proxima linha-->
+      <li v-for="(tarefa, index) in tarefasDatas" :key="index" :class="tarefa.prioridade">
+        <!-- adicionar todo o span novo -->
+        <span>
+          {{ tarefa.texto }}
+          <small class="prioridade-label">({{ tarefa.prioridade }})</small>
+        </span>
+
         <button @click="removeTarefa(index)">X</button>
       </li>
     </ul>
@@ -23,11 +37,13 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-const hoje = ref(new Date().toLocaleDateString().slice(0,10));
+const hoje = ref(new Date().toISOString().slice(0,10));
 let id = 0;
 
 const dataSelecionada = ref(new Date().toISOString().slice(0,10)); 
 const novaTarefa = ref(''); // variável para criar uma tarefa nova
+//ADD PARA PRIORIDADE FUNCIONAR
+const novaPrioridade = ref('');
 const todasTarefas = ref([
   // { id: id++, text: 'Arrumar a cama' }
 ]); //array das tarefas
@@ -55,14 +71,23 @@ const dataFormatada = computed(() => {
   });
 });
 
+//refatorar toda a parte de adicionarTarefa()
 function adicionarTarefa() {
-  if(!novaTarefa.value.trim()) return;
-  
+  if(!novaTarefa.value.trim() || !novaPrioridade.value) return;
+
+  //add esta const, relacionado ao obejto prioridade
+  const todasTarefa = {
+    texto: novaTarefa.value.trim(),
+    prioridade: novaPrioridade.value
+  };
+
   if(!todasTarefas.value[dataSelecionada.value]){
     todasTarefas.value[dataSelecionada.value] = [];
   }
-  todasTarefas.value[dataSelecionada.value].push(novaTarefa.value.trim());
-  novaTarefa.value = "";
+  todasTarefas.value[dataSelecionada.value].push(todasTarefa);
+  //add texto e prioridade
+  novaTarefa.value = '';
+  novaPrioridade.value = '';
   salvarTarefas();
   // todasTarefas.value.push({ id: id++, text: novaTarefa.value })
 }
@@ -84,6 +109,24 @@ function salvarTarefas(){
 
 
 <style scoped>
+
+/* Estilos para o seletor de prioridade ADD*/
+.prioridade-select {
+  flex: 1 1 30%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Estilos para as prioridades ADD*/
+.prioridade-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-left: 0.5rem;
+}
+
 
 .app {
   max-width: 600px;
@@ -175,6 +218,20 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   border-radius: 6px;
+}
+
+.listaTarefas li.alta {
+  border-left: 6px solid #e63946;
+}
+
+
+.listaTarefas li.media {
+  border-left: 6px solid #f4a261;
+}
+
+
+.listaTarefas li.baixa {
+  border-left: 6px solid #2a9d8f;
 }
 
 
