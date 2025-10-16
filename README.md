@@ -1,6 +1,6 @@
 # projeto-vue
 
-Este Projeto tem por finalidade a introdução ao framework Vue.js
+Este Projeto tem por finalidade a introdução ao framework Vue.js!
 
 ### PDF da aula abaixo ⭣
 
@@ -8,7 +8,7 @@ Este Projeto tem por finalidade a introdução ao framework Vue.js
 colar o link aqui
 ```
 
-## Assim que clonar o repositório, no terminal, instale as depedências ⭣
+## Após clonar o repositório, no terminal, instale as depedências ⭣
 
 ```sh
 npm install
