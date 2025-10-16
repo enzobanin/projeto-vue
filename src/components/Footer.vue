@@ -10,24 +10,23 @@
   color: #fff;
   text-align: center;
   padding: 15px;
-  margin-top: 50px;
   border-radius: 16px 16px 0 0;
   font-family: sans-serif;
-  margin-top: 2rem;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  position: fixed;
+  bottom: 0%;
 }
+ 
 
 .rodape h1 {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: normal;
   letter-spacing: 0.5px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   margin: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .rodape h1 {
     font-size: 0.9rem;
   }

@@ -5,7 +5,7 @@
 
     <form @submit.prevent="adicionarTarefa()" class="formulario">
       <input v-model="novaTarefa" type="text" placeholder="Adicione a tarefa" required/>
-      <button type="submit">Adicionar Tarefa</button>
+      <button type="submit">Adicionar</button>
     </form>
 
     <h2>Tarefas para <span class="dataDestacada">{{ dataFormatada }}</span></h2>
@@ -23,7 +23,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-const hoje = ref(new Date().toLocaleDateString().slice(0,10));
+const hoje = ref(new Date().toISOString().slice(0,10));
 let id = 0;
 
 const dataSelecionada = ref(new Date().toISOString().slice(0,10)); 

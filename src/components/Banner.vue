@@ -7,8 +7,6 @@
   </header>
 </template>
 
-<script setup>
-</script>
 
 <style scoped>
 .banner {
@@ -39,4 +37,9 @@
   height: 60px;
 }
 
+@media (max-width: 600px) {
+  .banner h1 {
+    font-size: 0.9rem;
+  }
+}
 </style>
