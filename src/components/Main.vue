@@ -7,13 +7,15 @@
       <input v-model="novaTarefa" type="text" placeholder="Adicione a tarefa" required/>
       
       <!-- parte de prioridades dividido em alta, media e baixa -->
-      <select v-model="novaPrioridade" class="prioridade-select">
+      <select v-model="novaPrioridade" class="selecionarPrioridade">
         <option disabled value="">Selecione a prioridade</option>
         <option value="alta">🔴 Alta</option>
         <option value="media">🟠 Média</option>
         <option value="baixa">🟢 Baixa</option>
-      </select>
-      <button type="submit">Adicionar Tarefa</button>
+      </select> <!--adiciona esse select para a prioridade-->
+
+
+      <button type="submit">Adicionar</button>
     </form>
 
     <h2>Tarefas para <span class="dataDestacada">{{ dataFormatada }}</span></h2>
@@ -23,7 +25,7 @@
         <!-- adicionar todo o span novo -->
         <span>
           {{ tarefa.texto }}
-          <small class="prioridade-label">({{ tarefa.prioridade }})</small>
+          <small class="labelPrioridade">({{ tarefa.prioridade }})</small>
         </span>
 
         <button @click="removeTarefa(index)">X</button>
@@ -45,7 +47,6 @@ const novaTarefa = ref(''); // variável para criar uma tarefa nova
 //ADD PARA PRIORIDADE FUNCIONAR
 const novaPrioridade = ref('');
 const todasTarefas = ref([
-  // { id: id++, text: 'Arrumar a cama' }
 ]); //array das tarefas
 function carregarTarefas(){
   const salvar = localStorage.getItem("tarefasPorData")
@@ -111,7 +112,7 @@ function salvarTarefas(){
 <style scoped>
 
 /* Estilos para o seletor de prioridade ADD*/
-.prioridade-select {
+.selecionarPrioridade {
   flex: 1 1 30%;
   padding: 0.6rem;
   font-size: 1rem;
@@ -121,7 +122,7 @@ function salvarTarefas(){
 }
 
 /* Estilos para as prioridades ADD*/
-.prioridade-label {
+.labelPrioridade {
   font-size: 0.9rem;
   color: #666;
   margin-left: 0.5rem;
