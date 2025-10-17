@@ -9,23 +9,21 @@
   background: linear-gradient(135deg, #264653, #2a9d8f);
   color: #fff;
   text-align: center;
-  padding: 30px 0px;
+  padding: 15px;
   border-radius: 16px 16px 0 0;
   font-family: sans-serif;
-  position: static;
   width: 100%;
 }
- 
 
 .rodape h1 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: normal;
   letter-spacing: 0.5px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   margin: 0;
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
   .rodape h1 {
     font-size: 0.9rem;
   }
