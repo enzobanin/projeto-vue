@@ -9,12 +9,11 @@
   background: linear-gradient(135deg, #264653, #2a9d8f);
   color: #fff;
   text-align: center;
-  padding: 15px;
+  padding: 30px 0px;
   border-radius: 16px 16px 0 0;
   font-family: sans-serif;
+  position: static;
   width: 100%;
-  position: fixed;
-  bottom: 0%;
 }
  
 
