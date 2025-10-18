@@ -17,16 +17,19 @@
     </ul>
 
     <p v-if="tarefasDatas.length === 0">Nenhuma tarefa para este dia.</p>
-
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue';
-const hoje = ref(new Date().toISOString().slice(0,10));
-let id = 0;
+const hoje = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10));
+// function getData(){
+//   console.log(new Date(new Date().getTime()-3 * 60 * 60 * 1000).toISOString().slice(0,10));
+//   return new Date(new Date().getTime()-3 * 60 * 60 * 1000).toISOString().slice(0,10);
+// }
 
-const dataSelecionada = ref(new Date().toISOString().slice(0,10)); 
+const dataSelecionada = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10)); 
+
 const novaTarefa = ref(''); // variável para criar uma tarefa nova
 const todasTarefas = ref([
   // { id: id++, text: 'Arrumar a cama' }
@@ -63,6 +66,7 @@ function adicionarTarefa() {
   }
   todasTarefas.value[dataSelecionada.value].push(novaTarefa.value.trim());
   novaTarefa.value = "";
+  console.log(dataSelecionada);
   salvarTarefas();
   // todasTarefas.value.push({ id: id++, text: novaTarefa.value })
 }
