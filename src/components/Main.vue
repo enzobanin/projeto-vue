@@ -23,6 +23,7 @@
       <!--add :class="tarefa.prioridade" no final da proxima linha-->
       <li v-for="(tarefa, index) in tarefasDatas" :key="index" :class="tarefa.prioridade">
         <!-- adicionar todo o span novo -->
+         <input type="checkbox" v-model=tarefa.feito>
         <span>
           {{ tarefa.texto }}
           <small class="labelPrioridade">({{ tarefa.prioridade }})</small>
@@ -46,6 +47,7 @@ const dataSelecionada = ref(new Date().toISOString().slice(0,10));
 const novaTarefa = ref(''); // variável para criar uma tarefa nova
 //ADD PARA PRIORIDADE FUNCIONAR
 const novaPrioridade = ref('');
+const feito = ref(false);
 const todasTarefas = ref([
 ]); //array das tarefas
 function carregarTarefas(){
@@ -79,7 +81,8 @@ function adicionarTarefa() {
   //add esta const, relacionado ao obejto prioridade
   const todasTarefa = {
     texto: novaTarefa.value.trim(),
-    prioridade: novaPrioridade.value
+    prioridade: novaPrioridade.value,
+    feito: novaTarefa.feito
   };
 
   if(!todasTarefas.value[dataSelecionada.value]){
