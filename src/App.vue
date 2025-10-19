@@ -8,4 +8,5 @@
     <Banner></Banner>
     <Main></Main>
     <Footer></Footer>
+    <!-- <ExemplosPraticos></ExemplosPraticos> -->
 </template>

@@ -23,22 +23,22 @@
 <script setup>
 import { ref, computed } from 'vue';
 const hoje = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10));
-// function getData(){
-//   console.log(new Date(new Date().getTime()-3 * 60 * 60 * 1000).toISOString().slice(0,10));
-//   return new Date(new Date().getTime()-3 * 60 * 60 * 1000).toISOString().slice(0,10);
-// }
 
 const dataSelecionada = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10)); 
 
 const novaTarefa = ref(''); // variável para criar uma tarefa nova
-const todasTarefas = ref([
-  // { id: id++, text: 'Arrumar a cama' }
-]); //array das tarefas
+const todasTarefas = ref([]); //array das tarefas
+
+
 function carregarTarefas(){
-  const salvar = localStorage.getItem("tarefasPorData")
-  if(salvar){
-    todasTarefas.value = JSON.parse(salvar)
+  const carregar = localStorage.getItem("tarefasPorData")
+  if(carregar){
+    todasTarefas.value = JSON.parse(carregar)
   }
+}
+
+function salvarTarefas(){
+  localStorage.setItem("tarefasPorData", JSON.stringify(todasTarefas.value));
 }
 
 carregarTarefas();
@@ -81,9 +81,7 @@ function removeTarefa(index) {
   // todasTarefas.value.splice(remove, 1)
 }
 
-function salvarTarefas(){
-  localStorage.setItem("tarefasPorData", JSON.stringify(todasTarefas.value));
-}
+
 </script>
 
 

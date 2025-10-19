@@ -1,6 +1,6 @@
 <template>
   <footer class="rodape">
-    <h1>Mini-curso de Vue.Js IFSP - 2025</h1>
+    <h1>© Mini-curso de Vue.Js IFSP - 2025</h1>
   </footer>
 </template>
 
