@@ -14,8 +14,6 @@
   border-radius: 16px 16px 0 0;
   font-family: sans-serif;
   margin-top: 2rem;
-  position: fixed;
-  bottom: 0;
   width: 100%;
 }
 
