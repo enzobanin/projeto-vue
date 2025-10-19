@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <Banner></Banner>
-  <Main></Main>
-  <Footer></Footer>
+    <Banner></Banner>
+    <Main></Main>
+    <Footer></Footer>
 </template>
