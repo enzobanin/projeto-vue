@@ -1,4 +1,5 @@
 <!-- exemplo 1 - INTERPOLAÇÃO -->
+
  <!-- <template>
     <h1>{{ mensagem }}</h1>
  </template>
@@ -10,6 +11,7 @@
 <!--------------------------------------------------------------------------->
 
 <!-- exemplo 2 - REATIVIDADE-->
+
 <!-- <script setup>
 import {ref, reactive} from 'vue'
 
@@ -26,6 +28,7 @@ const mensagem = ref('Hello World')
 <!--------------------------------------------------------------------------->
 
 <!-- exemplo 3 - OPTIONS API -->
+
 <!-- <template>
     <h1>Utilizando Options API</h1>
     <p>{{ n1 }} + {{ n2 }} = {{ somar() }}</p>
@@ -33,7 +36,7 @@ const mensagem = ref('Hello World')
 
 <script>
 export default {
-    data() { // Dados do Componente
+    data() { // Dados do Componente - TEM QUE SEPARAR OS DADOS, DOS METODOS
         return {
             n1: 2,
             n2: 5
@@ -42,7 +45,7 @@ export default {
 
     methods: { // Métodos/"Funções" do Componente
         somar() {
-            return this.n1 + this.n2;
+            return this.n1 + this.n2; // É NECESSARIO O USO DO THIS PARA ACESSAR O VALOR DA VARIAVEL 
         }
     },
 
@@ -58,7 +61,7 @@ export default {
 
 <!-- <template>
     <h1>Utilizando Composition API Com Setup Direto</h1>
-    <p>{{ n1 }} + {{ n2 }} = {{ dividir() }}</p>
+    <p>{{ n1 }} / {{ n2 }} = {{ dividir() }}</p>
 </template>
 
 <script setup> // Simplifica a criação do Componente
@@ -98,6 +101,7 @@ onMounted (() => {
 <!--------------------------------------------------------------------------->
 
 <!--exemplo 6 - ONE WAY DATABINDING(v-bind)-->
+
 <!-- <script setup>
     import {ref} from 'vue'
 
@@ -111,8 +115,8 @@ onMounted (() => {
 <!--------------------------------------------------------------------------->
 
 <!--exemplo 7 - TWO WAY DATABINDING(v-model)-->
-<!-- 
-<template>
+
+<!-- <template>
     <input v-model="nome">
     <p>Ola, {{ nome }}</p>
 </template>
@@ -125,6 +129,7 @@ onMounted (() => {
 <!--------------------------------------------------------------------------->
 
 <!--exemplo 8 - CONDICIONAL(v-if/v-else)-->
+
 <!-- <script setup>
 import {ref} from 'vue';
 
