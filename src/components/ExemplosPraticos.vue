@@ -1,4 +1,4 @@
-<!-- exemplo 1 - Interpolação -->
+<!-- exemplo 1 - INTERPOLAÇÃO -->
  <!-- <template>
     <h1>{{ mensagem }}</h1>
  </template>
@@ -7,7 +7,9 @@
     const mensagem = 'Hello World'
 </script> -->
 
-<!-- exemplo 2 - Reatividade-->
+<!--------------------------------------------------------------------------->
+
+<!-- exemplo 2 - REATIVIDADE-->
 <!-- <script setup>
 import {ref, reactive} from 'vue'
 
@@ -21,40 +23,61 @@ const mensagem = ref('Hello World')
     <p>Contador: {{ contador.count }}</p>   
 </template> -->
 
-<!--exemplo 3 - Options API-->
+<!--------------------------------------------------------------------------->
+
+<!-- exemplo 3 - OPTIONS API -->
 <!-- <template>
-    <p>Nome: {{ nome }}, Idade: {{ idade }}</p>
+    <h1>Utilizando Options API</h1>
+    <p>{{ n1 }} + {{ n2 }} = {{ somar() }}</p>
 </template>
 
 <script>
-    export default {
-        data: function(){
-            return {
-                nome: "Paulo",
-                idade: 24
-            }
+export default {
+    data() { // Dados do Componente
+        return {
+            n1: 2,
+            n2: 5
         }
+    },
+
+    methods: { // Métodos/"Funções" do Componente
+        somar() {
+            return this.n1 + this.n2;
+        }
+    },
+
+    mounted() { // O que será executado assim que for montado
+        console.log("O componente para soma foi criado");
     }
+}
 </script> -->
 
-<!-- exemplo 4 - Composition API -->
+<!--------------------------------------------------------------------------->
+
+<!-- exemplo 4 - COMPOSITION API -->
 
 <!-- <template>
-    <p>Nome: {{ nome }}, Idade: {{ idade }}</p>
+    <h1>Utilizando Composition API Com Setup Direto</h1>
+    <p>{{ n1 }} + {{ n2 }} = {{ dividir() }}</p>
 </template>
 
-<script>
-    export default {
-        setup: function(){
-            const nome = "Paulo";
-            const idade = 24;
+<script setup> // Simplifica a criação do Componente
+import { onMounted, ref } from 'vue';
+const n1 = ref(2);
+const n2 = ref(5);
 
-            return { nome, idade };
-        }
-    }
+function dividir() {
+    return n1.value / n2.value;
+}
+
+onMounted (() => {
+    console.log("O componente para divisão foi criado");
+})
 </script> -->
 
-<!-- exemplo 5 - Eventos(v-on) -->
+<!--------------------------------------------------------------------------->
+
+<!-- exemplo 5 - EVENTOS(v-on) -->
 
 <!-- <template>
     <button @click="aumentar" class="botao">
@@ -72,7 +95,9 @@ const mensagem = ref('Hello World')
     }
 </script> -->
 
-<!--exemplo 6 - One Way DataBinding(v-bind)-->
+<!--------------------------------------------------------------------------->
+
+<!--exemplo 6 - ONE WAY DATABINDING(v-bind)-->
 <!-- <script setup>
     import {ref} from 'vue'
 
@@ -83,7 +108,9 @@ const mensagem = ref('Hello World')
     <a v-bind:href="link">Site Vue</a>
 </template> -->
 
-<!--exemplo 7 - Two Way DataBinding(v-model)-->
+<!--------------------------------------------------------------------------->
+
+<!--exemplo 7 - TWO WAY DATABINDING(v-model)-->
 <!-- 
 <template>
     <input v-model="nome">
@@ -95,7 +122,9 @@ const mensagem = ref('Hello World')
     const nome = ref('')
 </script> -->
 
-<!--exemplo 8 - Condicional(v-if/v-else)-->
+<!--------------------------------------------------------------------------->
+
+<!--exemplo 8 - CONDICIONAL(v-if/v-else)-->
 <!-- <script setup>
 import {ref} from 'vue';
 
@@ -108,7 +137,9 @@ const logado = ref(true)
         <p v-else>Faça Login</p>
 </template> -->
 
-<!--exemplo 9 - Loop(v-for)-->
+<!--------------------------------------------------------------------------->
+
+<!--exemplo 9 - LOOP(v-for)-->
 
 <!-- <script setup>
 import {ref} from 'vue';
@@ -129,7 +160,9 @@ const lista = ref([
     </ul>
 </template> -->
 
-<!--exemplo 10 - Computed -->
+<!--------------------------------------------------------------------------->
+
+<!--exemplo 10 - COMPUTED -->
 
 <!-- <script setup>
 import {ref, computed} from 'vue'
