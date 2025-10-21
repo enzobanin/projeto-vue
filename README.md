@@ -5,7 +5,7 @@ Este Projeto tem por finalidade a introdução ao framework Vue.js!
 ### PDF da aula abaixo ⭣
 
 ```sh
-https://www.canva.com/design/DAG0pefcBEM/kUwffFt3d9MTDlpqsw5TAA/view?utm_content=DAG0pefcBEM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6072971545#4
+https://www.canva.com/design/DAG0pefcBEM/kUwffFt3d9MTDlpqsw5TAA/view?utm_content=DAG0pefcBEM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6072971545#1
 ```
 
 ## Após clonar o repositório, no terminal, instale as depedências ⭣
