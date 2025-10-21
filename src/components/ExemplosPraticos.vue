@@ -1,12 +1,15 @@
 <!-- exemplo 1 - INTERPOLAÇÃO -->
 
- <!-- <template>
-    <h1>{{ mensagem }}</h1>
- </template>
+<!-- <script setup>
+import {ref} from 'vue'; sempre precisa importar o ref
 
-<script setup>
-    const mensagem = 'Hello World'
-</script> -->
+const nome = ref('Julia');
+const cargo = ref('Desenvolvedora');
+</script>
+
+<template>
+    <p>{{ nome + cargo}}</p> da pra usar separado tb {{ nome }} é {{ cargo }}
+</template> -->
 
 <!--------------------------------------------------------------------------->
 
@@ -109,7 +112,7 @@ onMounted (() => {
 </script>
 
 <template>
-    <a v-bind:href="link">Site Vue</a>
+    <a v-bind:href="link">Documentação Vue</a>
 </template> -->
 
 <!--------------------------------------------------------------------------->
@@ -149,7 +152,7 @@ const logado = ref(true)
 <!-- <script setup>
 import {ref} from 'vue';
 
-const lista = ref([
+const lista = ref([ criando um array com objetos
     {id: 1,nome: "João"},
     {id: 2,nome: "Anderson"},
     {id: 3,nome: "Livia"},
@@ -173,7 +176,7 @@ const lista = ref([
 import {ref, computed} from 'vue'
 
 const nome = ref('')
-const nomeMaisculo = computed(() => nome.value.toUpperCase())
+const nomeMaisculo = computed(() => nome.value.toUpperCase()) função lambda ou Arrow Function
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <template>
   <header class="banner">
     <div class="banner-content">
-      <img src="../../public/icone-vue.png" alt="Ícone do Vue.js" class="icone-vue">
-      <h1>Lista de Tarefas 📅</h1>
+      <img src="../../public/icone-vue.png" alt="Ícone do Vue.js" class="icone-vue"> <!--BAIXAR A IMAGEM DO DRIVE COM O LINK DO SLIDE-->
+      <h1>Lista de Tarefas 📅</h1> <!--PESQUISAR "EMOJI CALENDÁRIO" NO GOOGLE-->
     </div>
   </header>
 </template>
@@ -15,7 +15,7 @@
   text-align: center;
   padding: 1.5rem 1rem;
   border-radius: 0 0 16px 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   font-family: sans-serif;
 }
 

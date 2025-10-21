@@ -8,7 +8,7 @@
       <button type="submit">Adicionar</button>
     </form>
 
-    <h2>Tarefas para <span class="dataDestacada">{{ dataFormatada }}</span></h2>
+    <h2>Tarefas para <span class="dataDestacada">{{ dataFormatada }}</span></h2> <!--SPAN É UM CONTAINER GENÉRICO USADO PARA AGRUPAR ELEMENTOS-->
     <ul class="listaTarefas">
       <li v-for="(tarefa, index) in tarefasDatas" :key="index">
         {{ tarefa}}
