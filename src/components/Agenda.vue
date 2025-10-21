@@ -22,35 +22,59 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-const hoje = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10));
+const hoje = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10)); //FORMATADA PARA NOSSO FUSO BRASILEIRO
 
 const dataSelecionada = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10)); 
 
-const novaTarefa = ref(''); // variável para criar uma tarefa nova
-const todasTarefas = ref([]); //array das tarefas
+const novaTarefa = ref(''); // TEXTO DIGITADO DENTRO DO INPUT
+const todasTarefas = ref({}); //VAI GUARDAR TODAS AS LISTAS DE TAREFAS, ORGANIZADAS POR DATA
 
 
-function carregarTarefas(){
-  const carregar = localStorage.getItem("tarefasPorData")
-  if(carregar){
-    todasTarefas.value = JSON.parse(carregar)
-  }
-}
-
+//PRIMEIRO CRIAR A FUNÇÃO QUE SALVA AS TAREFAS
 function salvarTarefas(){
-  localStorage.setItem("tarefasPorData", JSON.stringify(todasTarefas.value));
+  localStorage.setItem("tarefasPorData", JSON.stringify(todasTarefas.value)); //Serve para gravar um item no LocalStorage .setItem(chave, valor)
+  // localStorage só aceita texto, objetos ou arrays precisam ser convertidos em JSON
+
+  //EXEMPLO VISUAL 
+  // tarefasPorData: {   
+  //   "2025-10-22": ["Estudar Vue", "Ir para a faculdade"],  
+  //   "2025-10-23": ["Fazer compras"]                  
+  // }
 }
 
-carregarTarefas();
+//DEPOIS CRIAR A FUNÇÃO DE ADICIONAR A TAREFA
+function adicionarTarefa() {
+  if(!novaTarefa.value.trim()) return; //CASO ESTEJA VAZIA
+  
+  if(!todasTarefas.value[dataSelecionada.value]){ //CASO NÃO EXISTA UMA LISTA PARA ESSA DATA, CRIA UMA
+    todasTarefas.value[dataSelecionada.value] = [];
+  }
+  todasTarefas.value[dataSelecionada.value].push(novaTarefa.value.trim()); //ADICIONA NO ARRAY A TAREFA NOVA
+  novaTarefa.value = ""; //LIMPAR O CAMPO DO INPUT
+  salvarTarefas(); 
+}
 
-const tarefasDatas = computed(()=>{
+
+const tarefasDatas = computed(()=>{ //RETORNA A LISTA DE TAREFA DA DATA QUE O USUÁRIO ESCOLHER
   return todasTarefas.value[dataSelecionada.value] || [];
 });
 
+
+function removeTarefa(index) { 
+  todasTarefas.value[dataSelecionada.value].splice(index,1); //REMOVE APENAS UM ITEM COM O INDEX PASSADO POR PARAMETRO
+  if(todasTarefas.value[dataSelecionada.value].length === 0){ // SERVE PARA LIMPAR O OBJETO, POIS NÃO FAZ SENTIDO GUARDAR UMA DATA NA MEMÓRIA SEM TAREFA
+    delete todasTarefas.value[dataSelecionada.value];
+  }
+  salvarTarefas();
+  // const remove = todasTarefas.value.find(t => t.id === tarefa.id);
+  // todasTarefas.value.splice(remove, 1)
+}
+
+
 const dataFormatada = computed(() => {
-  const dataObj = new Date(dataSelecionada.value);
-  dataObj.setDate(dataObj.getDate() + 1);
-  return dataObj.toLocaleDateString("pt-BR", {
+  const data = new Date(hoje.value);
+  data.setDate(data.getDate() + 1);
+  return data.toLocaleDateString("pt-BR", {
     weekday: "long",
     year: "numeric",
     month: "long", 
@@ -58,28 +82,18 @@ const dataFormatada = computed(() => {
   });
 });
 
-function adicionarTarefa() {
-  if(!novaTarefa.value.trim()) return;
-  
-  if(!todasTarefas.value[dataSelecionada.value]){
-    todasTarefas.value[dataSelecionada.value] = [];
-  }
-  todasTarefas.value[dataSelecionada.value].push(novaTarefa.value.trim());
-  novaTarefa.value = "";
-  console.log(dataSelecionada);
-  salvarTarefas();
-  // todasTarefas.value.push({ id: id++, text: novaTarefa.value })
-}
 
-function removeTarefa(index) {
-  todasTarefas.value[dataSelecionada.value].splice(index,1);
-  if(todasTarefas.value[dataSelecionada.value].length === 0){
-    delete todasTarefas.value[dataSelecionada.value];
+
+function carregarTarefas(){ // ESSA FUNÇÃO É PARA CASO O USUÁRIO RECARREGUE A PÁGINA, AS TAREFAS IRÃO SER RESGATADAS
+  const carregar = localStorage.getItem("tarefasPorData") // BUSCA OS DADOS
+  if(carregar){
+    todasTarefas.value = JSON.parse(carregar) // CONVERTE DE VOLTA PARA OBJETO
   }
-  salvarTarefas();
-  // const remove = todasTarefas.value.find(t => t.id === tarefa.id);
-  // todasTarefas.value.splice(remove, 1)
 }
+carregarTarefas();
+
+
+
 
 
 </script>
