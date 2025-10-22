@@ -23,12 +23,8 @@
       <!--add :class="tarefa.prioridade" no final da proxima linha-->
       <li v-for="(tarefa, index) in tarefasDatas" :key="index" :class="tarefa.prioridade">
         <!-- adicionar todo o span novo -->
-         <input type="checkbox" v-model=tarefa.feito>
-        <span>
-          {{ tarefa.texto }}
           <small class="labelPrioridade">({{ tarefa.prioridade }})</small>
-        </span>
-
+          {{ tarefa.texto }}
         <button @click="removeTarefa(index)">X</button>
       </li>
     </ul>
@@ -40,16 +36,14 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-const hoje = ref(new Date().toISOString().slice(0,10));
-let id = 0;
+    const hoje = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10));
 
-const dataSelecionada = ref(new Date().toISOString().slice(0,10)); 
+    const dataSelecionada = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10));
 const novaTarefa = ref(''); // variável para criar uma tarefa nova
 //ADD PARA PRIORIDADE FUNCIONAR
 const novaPrioridade = ref('');
-const feito = ref(false);
-const todasTarefas = ref([
-]); //array das tarefas
+
+const todasTarefas = ref({}); //array das tarefas
 function carregarTarefas(){
   const salvar = localStorage.getItem("tarefasPorData")
   if(salvar){
@@ -82,7 +76,6 @@ function adicionarTarefa() {
   const todasTarefa = {
     texto: novaTarefa.value.trim(),
     prioridade: novaPrioridade.value,
-    feito: novaTarefa.feito
   };
 
   if(!todasTarefas.value[dataSelecionada.value]){
