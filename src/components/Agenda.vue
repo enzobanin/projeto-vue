@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <label for="escolhaData">Escolha o dia: </label>
-    <input type="date" :min=hoje id="escolhaData" v-model="dataSelecionada" class="data">
+    <input type="date" :min=hoje id="escolhaData" v-model="dataSelecionada" class="data"> <!--os ":" é v-bind-->
 
     <form @submit.prevent="adicionarTarefa()" class="formulario">
       <input v-model="novaTarefa" type="text" placeholder="Adicione a tarefa" required/>
@@ -27,19 +27,14 @@ const hoje = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOS
 const dataSelecionada = ref(new Date(new Date().setHours(new Date().getHours() - 3)).toISOString().slice(0,10)); 
 
 const novaTarefa = ref(''); // TEXTO DIGITADO DENTRO DO INPUT
-const todasTarefas = ref({}); //VAI GUARDAR TODAS AS LISTAS DE TAREFAS, ORGANIZADAS POR DATA
+const todasTarefas = ref({}); //VAI GUARDAR TODAS AS LISTAS DE TAREFAS, ORGANIZADAS POR DATA usamos o {} pois a data é uma chave de objeto e não índice do array
 
 
 //PRIMEIRO CRIAR A FUNÇÃO QUE SALVA AS TAREFAS
 function salvarTarefas(){
-  localStorage.setItem("tarefasPorData", JSON.stringify(todasTarefas.value)); //Serve para gravar um item no LocalStorage .setItem(chave, valor)
+  localStorage.setItem("tarefasPorData", JSON.stringify(todasTarefas.value)); //Serve para gravar um item no LocalStorage .setItem(chave, valor) 
+  //é como se fosse uma gaveta que se chama tarefasPorData
   // localStorage só aceita texto, objetos ou arrays precisam ser convertidos em JSON
-
-  //EXEMPLO VISUAL 
-  // tarefasPorData: {   
-  //   "2025-10-22": ["Estudar Vue", "Ir para a faculdade"],  
-  //   "2025-10-23": ["Fazer compras"]                  
-  // }
 }
 
 //DEPOIS CRIAR A FUNÇÃO DE ADICIONAR A TAREFA
@@ -49,6 +44,11 @@ function adicionarTarefa() {
   if(!todasTarefas.value[dataSelecionada.value]){ //CASO NÃO EXISTA UMA LISTA PARA ESSA DATA, CRIA UMA
     todasTarefas.value[dataSelecionada.value] = [];
   }
+  //EXEMPLO VISUAL 
+  // todasTarefas.value: {   
+  //   "2025-10-22": ["Estudar Vue", "Ir para a faculdade"],  
+  //   "2025-10-23": ["Comprar mistura"]                  
+  // }
   todasTarefas.value[dataSelecionada.value].push(novaTarefa.value.trim()); //ADICIONA NO ARRAY A TAREFA NOVA
   novaTarefa.value = ""; //LIMPAR O CAMPO DO INPUT
   salvarTarefas(); 
@@ -72,7 +72,7 @@ function removeTarefa(index) {
 
 
 const dataFormatada = computed(() => {
-  const data = new Date(hoje.value);
+  const data = new Date(dataSelecionada.value);
   data.setDate(data.getDate() + 1);
   return data.toLocaleDateString("pt-BR", {
     weekday: "long",

@@ -1,7 +1,10 @@
+<!--PEDIR PARA ELES ACESSAREM A TINY URL = tinyurl.com/intro-vue-->
+
+
 <template>
   <header class="banner">
     <div class="banner-content">
-      <img src="../../public/icone-vue.png" alt="Ícone do Vue.js" class="icone-vue"> <!--BAIXAR A IMAGEM DO DRIVE COM O LINK DO SLIDE-->
+      <img src="../../public/icone-vue.png" alt="Ícone do Vue.js" class="icone-vue"> 
       <h1>Lista de Tarefas 📅</h1> <!--PESQUISAR "EMOJI CALENDÁRIO" NO GOOGLE-->
     </div>
   </header>

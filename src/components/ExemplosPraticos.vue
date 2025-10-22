@@ -13,25 +13,27 @@ const cargo = ref('Desenvolvedora');
 
 <!--------------------------------------------------------------------------->
 
+<!--A GENTE SEMPRE PRECISA IMPORTAR OQ VAMOS USAR POIS O VUE USA O JAVASCRIPT MODERNO QUE TRABALHA COM MÓDULOS SEPARADOS-->
+
 <!-- exemplo 2 - REATIVIDADE-->
 
 <!-- <script setup>
-import {ref, reactive} from 'vue'
+    import {ref, reactive} from 'vue'
 
-const contador = reactive ({count:0}) // Objeto Reativo 
-const mensagem = ref('Hello World')
-
+    const contador = reactive({count:0});
+    const mensagem = ref('Hello World');
 </script>
 
 <template>
     <h1>{{ mensagem }}</h1>
-    <p>Contador: {{ contador.count }}</p>   
+    <p>Contador : {{ contador.count }}</p>
 </template> -->
 
 <!--------------------------------------------------------------------------->
 
 <!-- exemplo 3 - OPTIONS API -->
-
+<!--TUDO É SEPARADO POR SEÇÕES FIXAS-->
+<!--SE O COMPONENTE FICAR MAIOR, PODE FICAR DESORGANIZADO-->
 <!-- <template>
     <h1>Utilizando Options API</h1>
     <p>{{ n1 }} + {{ n2 }} = {{ somar() }}</p>
@@ -61,7 +63,7 @@ export default {
 <!--------------------------------------------------------------------------->
 
 <!-- exemplo 4 - COMPOSITION API -->
-
+<!--NOVO PADRÃO RECOMENDADO PELO VUE-->
 <!-- <template>
     <h1>Utilizando Composition API Com Setup Direto</h1>
     <p>{{ n1 }} / {{ n2 }} = {{ dividir() }}</p>
@@ -86,7 +88,7 @@ onMounted (() => {
 <!-- exemplo 5 - EVENTOS(v-on) -->
 
 <!-- <template>
-    <button @click="aumentar" class="botao">
+    <button @click="aumentar">
         <p>Contador: {{ contador }}</p>
     </button>
 </template>
